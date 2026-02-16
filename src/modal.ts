@@ -69,12 +69,12 @@ export class AnkiCardModal extends Modal {
                 );
 
             new Setting(contentEl)
-                .setName("Preserve Code Blocks")
+                .setName("Convert Code Blocks")
                 .addToggle(toggle =>
                     toggle
-                        .setValue(this.plugin.settings.preserveCodeBlocks)
+                        .setValue(this.plugin.settings.convertCodeBlocks)
                         .onChange(async value => {
-                            this.plugin.settings.preserveCodeBlocks = value;
+                            this.plugin.settings.convertCodeBlocks = value;
                             await this.plugin.saveSettings();
                         })
                 );
@@ -102,7 +102,7 @@ export class AnkiCardModal extends Modal {
                             const processedBack = processContent(
                                 this.selectedText,
                                 this.plugin.settings.convertMath,
-                                this.plugin.settings.preserveCodeBlocks
+                                this.plugin.settings.convertCodeBlocks
                             );
 
                             await addCard(this.deck, this.title, processedBack);

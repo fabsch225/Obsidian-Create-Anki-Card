@@ -38,32 +38,38 @@ export async function addCard(deck: string, front: string, back: string) {
 }
 
 export function processContent(
-    text: string,
-    convertMath: boolean,
-    preserveCodeBlocks: boolean
+  text: string,
+  convertMath: boolean,
+  convertCodeBlocks: boolean
 ): string {
+  const codeBlocks: string[] = [];
 
-    let codeBlocks: string[] = [];
+  text = text.replace(/```(\w*)\n([\s\S]*?)```/g, (_match, lang, codeContent) => {
+    if (convertCodeBlocks) {
+      // Convert to HTML <pre><code class="language-...">...</code></pre>
+      const escapedCode = codeContent
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
 
-    if (preserveCodeBlocks) {
-        text = text.replace(/```[\s\S]*?```/g, match => {
-            codeBlocks.push(match);
-            return `__CODE_BLOCK_${codeBlocks.length - 1}__`;
-        });
+      return `<pre style="display:flex; justify-content:center;"><code class="language-${lang}">${escapedCode}</code></pre>`;
+    } else {
+      codeBlocks.push(_match);
+      return `__CODE_BLOCK_${codeBlocks.length - 1}__`;
     }
+  });
 
-    if (convertMath) {
-        text = text.replace(/\$\$([\s\S]+?)\$\$/g, (_m, c) => `\\[${c.trim()}\\]`);
-        text = text.replace(/(?<!\$)\$(?!\$)(.+?)(?<!\$)\$(?!\$)/g,
-            (_m, c) => `\\(${c.trim()}\\)`
-        );
-    }
+  if (convertMath) {
+    text = text.replace(/\$\$([\s\S]+?)\$\$/g, (_m, c) => `\\[${c.trim()}\\]`);
+    text = text.replace(
+      /(?<!\$)\$(?!\$)(.+?)(?<!\$)\$(?!\$)/g,
+      (_m, c) => `\\(${c.trim()}\\)`
+    );
+  }
 
-    if (preserveCodeBlocks) {
-        codeBlocks.forEach((block, i) => {
-            text = text.replace(`__CODE_BLOCK_${i}__`, block);
-        });
-    }
+  codeBlocks.forEach((block, i) => {
+    text = text.replace(`__CODE_BLOCK_${i}__`, block);
+  });
 
-    return text;
+  return text;
 }

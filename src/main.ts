@@ -4,13 +4,13 @@ import { AnkiCardModal } from "./modal";
 export interface AnkiPluginSettings {
     defaultDeck: string;
     convertMath: boolean;
-    preserveCodeBlocks: boolean;
+    convertCodeBlocks: boolean;
 }
 
 export const DEFAULT_SETTINGS: AnkiPluginSettings = {
     defaultDeck: "",
     convertMath: true,
-    preserveCodeBlocks: true
+    convertCodeBlocks: true
 };
 
 
@@ -38,7 +38,7 @@ export default class CreateAnkiCardPlugin extends Plugin {
     settings: AnkiPluginSettings = {
         defaultDeck: "",
         convertMath: true,
-        preserveCodeBlocks: true
+        convertCodeBlocks: true
     };
 
     async onload() {

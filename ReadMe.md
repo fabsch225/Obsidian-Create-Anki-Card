@@ -8,12 +8,15 @@ Create Anki cards directly from selected text in Obsidian using AnkiConnect.
 * Choose **“Create Anki Card”**
 * Enter front (title)
 * Select deck
+* Convert Obsidian-Style Math to Anki
+* Convert Codeblock
 * Card is created instantly in Anki
 
 Requires:
 
 * Anki (running)
 * AnkiConnect installed
+* (Optionally) [Gregs Codehilighter](https://ankiweb.net/shared/info/112228974) for Anki
 
 ---
 
@@ -43,21 +46,13 @@ Requires:
 1. Select text in a note.
 2. Right-click.
 3. Click **Create Anki Card**.
-4. Enter the front text.
+4. Enter the front text and Toggle Codeblocks and Mathjax.
 5. Choose a deck.
 6. Click **Create Card**.
 
-The selected text becomes the **back** of the card.
+The selected text becomes the **back** of the card. Codeblocks and Mathjax will be converted optionally.
 
----
-
-## Notes
-
-* Anki must be open.
-* AnkiConnect must be enabled.
-* Uses the **Basic** note type.
-
----
+---ß
 
 ## Development
 
