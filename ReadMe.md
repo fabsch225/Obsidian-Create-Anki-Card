@@ -52,7 +52,7 @@ Requires:
 
 The selected text becomes the **back** of the card. Codeblocks and Mathjax will be converted optionally.
 
----ß
+---
 
 ## Development
 
