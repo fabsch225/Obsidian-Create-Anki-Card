@@ -9,7 +9,7 @@ Create Anki cards directly from selected text in Obsidian using AnkiConnect.
 * Enter front (title)
 * Select deck
 * Convert Obsidian-Style Math to Anki
-* Convert Codeblock
+* Convert Codeblocks
 * Card is created instantly in Anki
 
 Requires:
