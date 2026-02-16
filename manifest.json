@@ -1,0 +1,10 @@
+{
+  "id": "create-anki-card",
+  "name": "Create Anki Card",
+  "version": "0.1.0",
+  "minAppVersion": "1.4.0",
+  "description": "Create Anki cards from selected text.",
+  "author": "Fabian Schuller",
+  "authorUrl": "",
+  "isDesktopOnly": true
+}
